@@ -5,7 +5,7 @@ import { ref, onMounted, computed, watch } from 'vue'
 const todos = ref([])
 const name = ("")
 
-const input_content = ref("")
+let input_content = ref("")
 const input_category = ref(null)
 
 const todos_asc = computed(() => todos.value.sort((a, b) => {
