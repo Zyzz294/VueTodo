@@ -5,7 +5,7 @@ import { ref, onMounted, computed, watch } from 'vue'
 const todos = ref([])
 const name = ("")
 
-const input_content = ref("")
+let input_content = ref("")
 const input_category = ref(null)
 
 const todos_asc = computed(() => todos.value.sort((a, b) => {
@@ -79,7 +79,7 @@ onMounted(() => {
     <section class="todo-list">
       <h3>TODO LIST</h3>
       <div class="list">
-        <div v-for="todo in todos_asc" :class="`todo-item ${todo.done && 'done'}`">
+        <div v-for="(todo, index) in todos_asc" :key="index" :class="`todo-item ${todo.done && 'done'}`">
           <label>
             <input type="checkbox" v-model="todo.done" />
             <span :class="`bubble ${todo.category}`"></span>
